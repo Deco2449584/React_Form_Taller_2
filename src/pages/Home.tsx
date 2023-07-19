@@ -58,6 +58,9 @@ const StyledLink = styled(Link)<StyledLinkProps>`
   text-decoration: none;
   cursor: pointer;
   margin: 5px;
+  &:hover {
+    background-color: ${(props) => (props.primary ? "#2458a3" : "#3e9955")};
+  }
 `;
 
 const Home = () => {
