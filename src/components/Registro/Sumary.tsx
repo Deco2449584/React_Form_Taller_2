@@ -3,6 +3,80 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearFormData } from "../../features/formSlice";
 import { FormState } from "../../features/formSlice";
+import styled from "styled-components";
+
+const SummaryContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const SummaryCard = styled.div`
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 16px;
+  max-width: 400px;
+  width: 100%;
+`;
+
+const SummaryHeader = styled.h2`
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`;
+
+const SummaryList = styled.ul`
+  list-style: disc;
+  padding-left: 2rem;
+`;
+
+const SummaryListItem = styled.li`
+  margin-bottom: 0.5rem;
+`;
+
+const SummaryButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+`;
+
+const SummaryButton = styled.button`
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+`;
+
+const SummaryButtonPrimary = styled(SummaryButton)`
+  background-color: #007bff;
+  color: #fff;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const SummaryButtonSecondary = styled(SummaryButton)`
+  background-color: #6c757d;
+  color: #fff;
+
+  &:hover {
+    background-color: #555e66;
+  }
+`;
+
+const SummaryButtonDanger = styled(SummaryButton)`
+  background-color: #dc3545;
+  color: #fff;
+
+  &:hover {
+    background-color: #c82333;
+  }
+`;
 
 const Summary: React.FC = () => {
   const formData = useSelector((state: { form: FormState }) => state.form);
@@ -19,75 +93,92 @@ const Summary: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Summary</h2>
+    <SummaryContainer>
+      <SummaryCard>
+        <SummaryHeader>Summary</SummaryHeader>
         <div className="mb-4">
           <p className="font-bold">Personal Data:</p>
-          <ul className="list-disc pl-6">
-            <li>First Name: {formData.personalData.firstName}</li>
-            <li>Last Name: {formData.personalData.lastName}</li>
-            <li>Birth Date: {formData.personalData.birthDate}</li>
-            <li>Gender: {formData.personalData.gender}</li>
-          </ul>
+          <SummaryList>
+            <SummaryListItem>
+              First Name: {formData.personalData.firstName}
+            </SummaryListItem>
+            <SummaryListItem>
+              Last Name: {formData.personalData.lastName}
+            </SummaryListItem>
+            <SummaryListItem>
+              Birth Date: {formData.personalData.birthDate}
+            </SummaryListItem>
+            <SummaryListItem>
+              Gender: {formData.personalData.gender}
+            </SummaryListItem>
+          </SummaryList>
         </div>
         <div className="mb-4">
           <p className="font-bold">Academic Data:</p>
-          <ul className="list-disc pl-6">
-            <li>Degree: {formData.academicData.degree}</li>
-            <li>Institution: {formData.academicData.institution}</li>
-            <li>Year: {formData.academicData.year}</li>
-          </ul>
+          <SummaryList>
+            <SummaryListItem>
+              Degree: {formData.academicData.degree}
+            </SummaryListItem>
+            <SummaryListItem>
+              Institution: {formData.academicData.institution}
+            </SummaryListItem>
+            <SummaryListItem>
+              Year: {formData.academicData.year}
+            </SummaryListItem>
+          </SummaryList>
         </div>
         <div className="mb-4">
           <p className="font-bold">Family Data:</p>
-          <ul className="list-disc pl-6">
-            <li>Parent's Name: {formData.familyData.parentName}</li>
-            <li>Sibling's Name: {formData.familyData.siblingName}</li>
-            <li>Marital Status: {formData.familyData.maritalStatus}</li>
-          </ul>
+          <SummaryList>
+            <SummaryListItem>
+              Parent's Name: {formData.familyData.parentName}
+            </SummaryListItem>
+            <SummaryListItem>
+              Sibling's Name: {formData.familyData.siblingName}
+            </SummaryListItem>
+            <SummaryListItem>
+              Marital Status: {formData.familyData.maritalStatus}
+            </SummaryListItem>
+          </SummaryList>
         </div>
         <div className="mb-4">
           <p className="font-bold">Employment Data:</p>
-          <ul className="list-disc pl-6">
-            <li>Company Name: {formData.employmentData.companyName}</li>
-            <li>Position: {formData.employmentData.position}</li>
-            <li>Years of Work: {formData.employmentData.yearsOfWork}</li>
-          </ul>
+          <SummaryList>
+            <SummaryListItem>
+              Company Name: {formData.employmentData.companyName}
+            </SummaryListItem>
+            <SummaryListItem>
+              Position: {formData.employmentData.position}
+            </SummaryListItem>
+            <SummaryListItem>
+              Years of Work: {formData.employmentData.yearsOfWork}
+            </SummaryListItem>
+          </SummaryList>
         </div>
         <div className="mb-4">
           <p className="font-bold">Account Data:</p>
-          <ul className="list-disc pl-6">
-            <li>Username: {formData.accountData.username}</li>
-            <li>Password: {formData.accountData.password}</li>
-          </ul>
+          <SummaryList>
+            <SummaryListItem>
+              Username: {formData.accountData.username}
+            </SummaryListItem>
+            <SummaryListItem>
+              Password: {formData.accountData.password}
+            </SummaryListItem>
+          </SummaryList>
         </div>
-        <div className="flex justify-between">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleSend}
-          >
+        <SummaryButtonContainer>
+          <SummaryButtonPrimary onClick={handleSend}>
             Enviar
-          </button>
+          </SummaryButtonPrimary>
           <Link to="/Registro/AccountData">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-            >
-              Volver
-            </button>
+            <SummaryButtonSecondary>Volver</SummaryButtonSecondary>
           </Link>
-          <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleCancel}
-          >
+          <SummaryButtonDanger onClick={handleCancel}>
             Cancelar
-          </button>
-        </div>
-      </div>
-    </div>
+          </SummaryButtonDanger>
+        </SummaryButtonContainer>
+      </SummaryCard>
+    </SummaryContainer>
   );
 };
 

@@ -121,10 +121,10 @@ const PersonalData: React.FC = () => {
       errors.birthDate = "Required";
     }
 
-    /*   if (!values.gender) {
+    if (!values.gender) {
       errors.gender = "Required";
     }
- */
+
     return errors;
   };
 
